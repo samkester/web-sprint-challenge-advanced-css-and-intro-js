@@ -328,12 +328,28 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML(/* Code here */){
-
-    /* Code here */
-
+function getHTML(artists){
+  for(let i = 0; i < artists.length; i++)
+  {
+    console.log(getHtmlForArtist(artists[i]));
   }
+}
 
+function getHtmlForArtist(artist){
+  return `
+  <div id="artist">
+    <div class="image">
+      <img src="assets/${artist.name.replace(/ /g, "-")}.jpg"/>
+    </div>
+    <div class="name">
+      <a href="${artist.wikipedia}"/>
+    </div>
+    <div class="bio">${artist.bio}</div>
+  </div>` // assumes that each artist's profile image will be found at `assets/artists-name-with-hyphens.jpg`
+  // note that this is not the HTML structure used on the current page, which lacks the div.image and div.name
+}
+
+getHTML(artists);
 
 /* STRETCH 2: Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
